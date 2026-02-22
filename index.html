@@ -226,6 +226,11 @@
       gap:10px;
       min-height: 152px;
     }
+    .game:hover{
+  border-color: rgba(255,255,255,.22);
+  transform: translateY(-2px);
+  transition: transform .15s ease, border-color .15s ease;
+}
     @media (max-width: 980px){ .game{grid-column: span 3} }
     @media (max-width: 620px){ .game{grid-column: span 1} }
 
