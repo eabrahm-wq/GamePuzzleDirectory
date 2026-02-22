@@ -434,6 +434,16 @@ mark{
   };
 
   const $ = sel => document.querySelector(sel);
+  function highlight(text, query){
+  if(!query) return text;
+
+  const safe = query.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+
+  return text.replace(
+    new RegExp(`(${safe})`, 'ig'),
+    '<mark>$1</mark>'
+  );
+}
   const el = (tag, attrs={}, ...children) => {
     const n = document.createElement(tag);
     for (const [k,v] of Object.entries(attrs)) {
@@ -547,9 +557,15 @@ mark{
 
     const play = el("a", { class:"play", href:g.url, target:"_blank", rel:"noopener noreferrer" }, "Play ↗");
 
-    return el("div", { class:"game" },
-      el("div", { class:"game-top" },
-        el("div", {}, el("div", { class:"game-name" }, g.name), el("div", { class:"game-desc" }, g.description)),
+    return el("div", {
+  class:"game-name",
+  innerHTML: highlight(g.name, state.q)
+}),
+
+el("div", {
+  class:"game-desc",
+  innerHTML: highlight(g.description, state.q)
+}),),
         star
       ),
       chips,
