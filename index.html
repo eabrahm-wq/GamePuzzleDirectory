@@ -116,7 +116,46 @@
 
     .filtersCard{ position: sticky; top: 72px; z-index: 15; }
     @media (max-width: 520px){ .filtersCard{ top: 86px; } }
-/* Mobile polish */
+/* Mobile header layout */
+@media (max-width: 620px){
+  header{
+    flex-wrap: wrap;          /* allow 2 rows */
+    align-items: center;
+    gap: 10px;
+  }
+
+  .brand{
+    width: 100%;
+    align-items: center;
+  }
+
+  h1{
+    white-space: normal;      /* allow title to wrap instead of truncating */
+    overflow: visible;
+    text-overflow: clip;
+  }
+
+  .sub{
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+
+  .right{
+    width: 100%;
+    justify-content: flex-start;  /* buttons start at left */
+  }
+
+  .pill{
+    display: none;            /* hide date to save space (recommended) */
+  }
+
+  /* Optional: make buttons a little more compact on mobile */
+  .btn{ padding: 9px 11px; border-radius: 12px; }
+
+  /* Filters feel better non-sticky on phones */
+  .filtersCard{ position: static; }
+}/* Mobile polish */
 @media (max-width: 620px){
   /* Header wrap */
   header{ align-items:flex-start; }
